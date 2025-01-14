@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin - Manage Account User</title>
+</head>
+<body class="bg-gray-100 font-sans leading-relaxed tracking-wide">
+<div th:replace="~{'fragment/admin_header' :: admin_header}"></div>
+<!-- Container -->
+<div class="container mx-auto p-6">
+    
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Manage Account User</h1>
+        
+    </div>
+    
+    <!-- Add Recommendation Section -->
+    <div class="mb-6">
+        <a href="/admin/manage-user/create"
+           class="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+            Add New AdminAccount
+        </a>
+    </div>
+    <h2 class="text-2xl font-semibold text-gray-700 mb-4">User List</h2>
+    <!-- Recommendations List -->
+    <div class="bg-white p-6 shadow-lg rounded-lg h-screen" style="overflow-x: auto;">
+        <div class="w-full">
+            <table class="table-auto min-w-max w-full">
+                <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">ID</th>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">Fullname</th>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">Gender</th>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">Email</th>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">PhoneNum</th>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">Role</th>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">Avatar</th>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">Username</th>
+                    <th class="px-2 py-1 text-left text-gray-600 text-sm">IsActive</th>
+                    <td class="px-2 py-1 text-center">
+                        <button class="text-red-500 hover:text-red-700 mx-1" data-id="${user.id}" onclick="deleteUser(${user.id})">
+                            <i class="ri-delete-bin-7-line"></i>
+                        </button>
+                        <button class="text-yellow-500 hover:text-yellow-700 mx-1" data-id="${user.id}" onclick="toggleActive(${user.id}, ${user.isActive})">
+                            <i class="ri-user-settings-line"></i>
+                        </button>
+                    </td>
+
+                </tr>
+                </thead>
+                <tbody id="recommendationList" class="text-sm">
+                <!-- Recommendations will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Pagination Section -->
+    <div id="pagination" class="mt-6 flex justify-center gap-2">
+        <!-- Pagination buttons go here -->
+    </div>
+
+</div>
+<script type="text/javascript" th:src="@{/js/manage_user.js}"></script>
+</body>
+</html>

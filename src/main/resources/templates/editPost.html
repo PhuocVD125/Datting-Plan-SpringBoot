@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Post</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body id="body" class="bg-gray-100">
+  <div th:insert="~{social_fragment/header :: header}"></div>
+  <div class="m-6 max-w-4xl mx-auto bg-white shadow-md rounded-md p-6">
+      
+    <h1 class="text-2xl font-bold mb-4">Edit Post</h1>
+    <div class="mt-5 mb-5 flex items-center space-x-2">
+                            <img id="userAvatar" src="" alt="User Avatar" class="w-8 h-8 rounded-full">
+
+                            <div>
+                                <p id="userName" class="text-gray-800 font-semibold text-2xl"></p>
+                            </div>
+    </div>
+    <!-- Title -->
+    <div class="mb-4">
+      <label for="title" class="block text-gray-700 font-medium mb-2">Title</label>
+      <input 
+        type="text" 
+        id="title" 
+        class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+        placeholder="Enter the title...">
+    </div>
+    <div class="mb-4">
+        <label for="searchInput" class="block text-sm font-medium">Search Recommendations:</label>
+        <input
+          type="text"
+          id="searchRecInput"
+          class="border rounded w-full p-2"
+          placeholder="Type to search..."
+        >
+      </div>
+  
+      <div class="mb-4">
+        <label for="recommendationId" class="block text-sm font-medium">Recommendations:</label>
+        <select id="recommendationId" name="recommendationId" class="border rounded w-full p-2">
+          <!-- Default options -->
+          <option value="">Select a recommendation</option>
+        </select>
+      </div>
+    <!-- Content -->
+    <div class="mb-4">
+      <label for="content" class="block text-gray-700 font-medium mb-2">Content</label>
+      <textarea 
+        id="content" 
+        rows="6" 
+        class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+        placeholder="Enter the content..."></textarea>
+    </div>
+    <div id="tagContainer" class="mb-4">
+        
+      </div>
+    <div id="customPrompt" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-lg p-6 shadow-md w-80">
+        <h3 class="text-lg font-semibold mb-4">Add a New Tag</h3>
+        <input
+            id="customPromptInput"
+            type="text"
+            class="w-full border border-gray-300 rounded p-2"
+            placeholder="Enter a tag"
+        />
+        <div class="mt-4 flex justify-end space-x-2">
+            <button
+                id="customPromptCancel"
+                class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400"
+            >
+                Cancel
+            </button>
+            <button
+                id="customPromptSubmit"
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+                Add Tag
+            </button>
+        </div>
+    </div>
+</div>
+    <!-- Image List -->
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium mb-2">Image List</label>
+      <div class="grid grid-cols-3 gap-4">
+        <!-- Each image -->
+        <div class="relative group">
+          <img 
+            src="https://via.placeholder.com/150" 
+            alt="Image preview" 
+            class="w-full h-32 object-cover rounded-md">
+          <button 
+            class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100">
+            ✕
+          </button>
+        </div>
+        <!-- Add new image -->
+        
+      </div>
+      <label 
+          class="flex items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 text-gray-500 rounded-md cursor-pointer">
+          <span>+</span>
+          <input id="images" type="file" class="hidden add-image-input" multiple>
+        </label>
+    </div>
+    
+    <!-- Actions -->
+    <div class="flex justify-end space-x-4">
+      <button
+          id="cancelSavePost"
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400">
+        Cancel
+      </button>
+      <button
+          id="savePost"
+        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+        Save
+      </button>
+    </div>
+  </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/editPost.js}"></script>
+    <script type="text/javascript" th:src="@{/js/social_header.js}"></script>
+    <script type="text/javascript" th:inline="javascript">
+                var postId = [[${postId}]];
+                var userId = [[${userId != null ? userId : 'null'}
+                        ]];
+                    var userRole = [[${userRole}]];
+            </script>
+</body>
+</html>

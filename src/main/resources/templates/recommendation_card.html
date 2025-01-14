@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Recommendation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="~{'fragment/home_header' :: header}"></div>
+        <div class="bg-white-100">
+            <div class="container mx-auto px-4 py-8">
+                <div class="flex flex-wrap -mx-4">
+                    <!-- Recommendation list Images -->
+                    <div class="w-full md:w-1/2 px-4 mb-8">
+                        <img src="" alt="Product"
+                             class="w-full h-auto rounded-lg shadow-md mb-4" id="mainImage">
+                        <div id="thumbnailContainer" class="m-5 flex gap-4 py-4 justify-center overflow-x-auto">
+                            <!--                            <img src="https://images.unsplash.com/photo-1505751171710-1f6d0ace5a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8aGVhZHBob25lfGVufDB8MHx8fDE3MjEzMDM2OTB8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Thumbnail 1"
+                                                             class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                                             onclick="changeImage(this.src)">
+                                                        <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080" alt="Thumbnail 2"
+                                                             class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                                             onclick="changeImage(this.src)">
+                                                        <img src="https://images.unsplash.com/photo-1496957961599-e35b69ef5d7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080" alt="Thumbnail 3"
+                                                             class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                                             onclick="changeImage(this.src)">
+                                                        <img src="https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080" alt="Thumbnail 4"
+                                                             class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                                             onclick="changeImage(this.src)">-->
+                        </div>
+                    </div>
+
+
+                    <div class="w-full md:w-1/2 px-4">
+                        <!--title-->
+                        <h2 id="title" class="m-5 text-3xl font-bold mb-2"></h2>
+                        <!--location-->
+                        <div id="tags" class="flex">
+                            
+                        </div>
+                        <div class="flex">
+                            <p id="startDate" class="m-5 text-xl text-blue-700 mb-6"></p>
+                            <p id="endDate" class="m-5 text-xl text-blue-700 mb-6"></p>
+                        </div>
+                        
+                        
+                        <p id="recStartTime" class="m-5 text-xl text-blue-700 mb-6"></p>
+                        <p id="recEndTime" class="m-5 text-xl text-blue-700 mb-6"></p>
+                        <a href="#" id="location" class="m-5 text-xl mb-4"></a>
+                        <p id="address" class="m-5 text-xl mb-4"></p>
+
+                        <div class="mb-4">
+                            <!--min budget-->
+                            <span class="m-5 text-slate-400 text-sm ml-5">Min</span>
+                            <span id="minBudget" class="m-5 text-2xl font-bold mr-2">$349.99</span>
+                            <!--max budget-->
+                            <span class="m-5 text-slate-400 text-sm ml-5">Max</span>
+                            <span id="maxBudget" class="m-5 text-2xl font-bold mr-2 ">$349.99</span>
+
+                        </div>
+
+
+                        <div id="ratingStars" class="flex items-center mb-4">
+                            <button id="voteBtn" class="py-2.5 px-4 text-green-600  hover:scale-105 hover:shadow text-center border border-gray-300 rounded-md border-gray-400 h-10 text-base flex items-center gap-2 lg:gap-3">
+                                <svg id="isVoted" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"></path>
+                                </svg>
+                                <span id="voteCount">342</span>
+                            </button>
+
+                        </div>
+                        <!--description-->
+                        <p id="description" class="text-gray-700 mb-6">
+                        </p>
+                        <p id="email" class="m-5 text-xl mb-6"></p>
+                        
+
+
+
+                        <div class="flex space-x-4 mb-6">
+                            <button id="addToPlan"
+                                    class="bg-indigo-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+
+                                Add to Plan
+                            </button>
+
+                        </div>
+                        <div class="plan-dropdown hidden absolute bg-gray-50 shadow rounded max-h-64 overflow-y-auto z-10">
+                            <ul id="plan-list" class="p-2">
+                                <!-- Populated dynamically -->
+                            </ul>
+                            <button style="position: sticky; bottom: 0; z-index: 10;" class="close-dropdown bg-red-500 text-white px-4 py-2 rounded w-full mt-2 hover:bg-red-600">
+                                Close
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>  
+            <div class="w-full items-center justify-center min-h-screen">
+                <hr class="mt-2 mb-2">
+                <h2 class=" m-6 text-3xl font-semibold text-gray-700 mb-4">Related Post</h2>
+                <hr class="mt-2 mb-2">
+                <hr>
+                <div class="container mx-auto px-4">
+
+                    <div id="posts" class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <div class="bg-white p-4 shadow-md rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-800">${review.title}</h3>
+                    <p class="text-gray-600 mt-2">${review.content}</p>
+                    <p class="text-sm text-gray-500 mt-4">Like</p>
+                    <p class="text-sm text-gray-500 mt-4">Comment   </p>
+                    <p class="text-sm text-gray-500 mt-4">- ${review.author}</p>
+                        </div>
+                    </div>
+                    
+                    <div id="pagination" class="p-5 float-end">
+                        <ul class="flex items-center -space-x-px h-8 text-sm">
+
+                        </ul>
+                        <!-- Pagination -->
+                        
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <script>
+                    var recId = [[${recId
+                    }
+                    ]];
+                    var userId = [[${userId != null ? userId : 'null'
+                    }
+                    ]];
+                    function changeImage(src) {
+                    document.getElementById('mainImage').src = src;
+                    }
+
+                </script>
+                <script>
+                    const stars = document.querySelectorAll("#rating-container label");
+                    const inputs = document.querySelectorAll("#rating-container input");
+                    inputs.forEach((input, index) => {
+                    input.addEventListener("change", () => {
+                    // Reset tất cả sao về trạng thái ban đầu
+                    stars.forEach(star => star.classList.remove("text-yellow-500", "text-gray-400"));
+                    stars.forEach(star => star.classList.add("text-gray-400"));
+                    // Đổi màu các sao từ đầu tới sao được chọn
+                    for (let i = 0; i <= index; i++) {
+                    stars[i].classList.remove("text-gray-400");
+                    stars[i].classList.add("text-yellow-500");
+                    }
+                    });
+                    });
+                </script>
+                <script type="text/javascript" th:src="@{/js/recommendation_card.js}"></script>
+                <script type="text/javascript" th:src="@{/js/header.js}"></script>
+            </div>
+    </body>
+</html>

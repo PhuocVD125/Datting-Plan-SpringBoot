@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin - Manage Preference Tags</title>
+</head>
+<body class="bg-gray-100 font-sans leading-relaxed tracking-wide">
+<div th:replace="~{'fragment/admin_header' :: admin_header}"></div>
+<!-- Container -->
+<div class="container mx-auto p-6">
+
+    <!-- Header -->
+    
+
+    <!-- Add/Edit Tag Section -->
+    <div class="mb-6 p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+        <h2 class="text-2xl font-semibold text-gray-700 mb-4">Tag Management</h2>
+        <div class="flex items-center gap-4">
+            <input
+                    type="text"
+                    id="newTag"
+                    class="border px-4 py-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter new tag"
+            />
+            <button
+                    id="addTagBtn"
+                    class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+            >
+                Add Tag
+            </button>
+            <button
+                    id="saveTagBtn"
+                    class="bg-yellow-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-yellow-700 transition duration-300 hidden"
+            >
+                Save Changes
+            </button>
+            <button
+                    id="cancelBtn"
+                    class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-yellow-700 transition duration-300 hidden"
+            >
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="mb-6 p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+        <h2 class="text-2xl font-semibold text-gray-700 mb-4">Search Tags</h2>
+        <div class="flex items-center gap-4">
+            <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search tags..."
+                    class="border px-3 py-2 rounded-lg w-1/4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+        </div>
+    </div>
+
+    <!-- Preference Tags List -->
+    <div class="bg-white p-6 shadow-lg rounded-lg">
+        <h2 class="text-2xl font-semibold text-gray-700 mb-4">Preference Tags List</h2>
+        <table class="w-full table-auto">
+            <thead class="bg-gray-100">
+            <tr>
+                <th class="px-4 py-2 text-left text-gray-600">ID</th>
+                <th class="px-4 py-2 text-left text-gray-600">Tag Name</th>
+                <th class="px-4 py-2 text-center text-gray-600">Actions</th>
+            </tr>
+            </thead>
+            <tbody id="tagList">
+            <!-- Tags will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Section -->
+    <div id="pagination" class="mt-6 flex justify-center gap-2">
+        <!-- Pagination buttons go here -->
+    </div>
+
+</div>
+<script type="text/javascript" th:src="@{/js/preference_tag.js}"></script>
+</body>
+</html>

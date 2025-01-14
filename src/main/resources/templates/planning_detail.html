@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Plan Detail</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+
+    </head>
+    <body>
+        <div th:replace="~{'fragment/home_header' :: header}"></div>
+        
+        <div id="planContainer" class="max-w-4xl mx-auto p-6">
+            
+            <!-- Plan Header -->
+            
+
+            <!-- Activities List -->
+            
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/header.js}"></script>
+        <script type="text/javascript" th:src="@{/js/planning_detail.js}"></script>
+        <script>
+            var userId = [[${userId != null ? userId : 'null'}]];
+            
+
+        </script>
+    </body>
+</html>

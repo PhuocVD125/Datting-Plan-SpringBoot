@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Tag</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div th:replace="~{'fragment/home_header' :: header}"></div>
+        <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-16">
+            <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+                <div class="mb-4 flex items-center justify-between gap-4 md:mb-8">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">All Tag</h2>
+
+
+                </div>
+                <form class="max-w-md mx-auto">   
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input type="text" id="searchTagInput" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search tag." />
+
+                    </div>
+                </form>
+                <div id="tagContainer" class="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+<!--                    <a href="#" class="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        
+                        <span class="text-sm font-medium text-gray-900 dark:text-white">Computer &amp; Office</span>
+                    </a>-->
+
+                </div>
+            </div>
+            <div id="pagination" class="p-5 float-end">
+                <ul class="flex items-center -space-x-px h-8 text-sm">
+
+                </ul>
+
+            </div>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script type="text/javascript" th:src="@{/js/header.js}"></script>
+     <script type="text/javascript" th:src="@{/js/all_preferenceTag.js}"></script>
+    </body>
+    
+    
+</html>

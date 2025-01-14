@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Social</title>
+</head>
+<body class="font-inter text-gray-800 bg-gray-100">
+    
+    <!-- start: Navbar -->
+    <div th:insert="~{social_fragment/header :: header}"></div>
+    <!-- end: Navbar -->
+    <p class="m-10 text-2xl text-gray-800 font-semibold">Post with tag : [[${tagName}]]</p>
+    <!-- start: Main -->
+    <main>
+        
+      <div class="h-screen overflow-y-scroll bg-white">
+        
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2 lg:gap-8">
+            
+          <!--  -->
+          <div class="lg:col-span-2 p-4 bg-white mt-3" id="posted">
+            <div id="listPost" class="grid grid-cols-4 lg:grid-cols-4 gap-2">
+              <!-- First Column -->
+<!--              <div class="bg-white p-8 rounded-lg shadow-md max-w-md">
+                 User Info with Three-Dot Menu 
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center space-x-2">
+                    <img src="data:image/jpeg;base64,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" alt="User Avatar" class="w-8 h-8 rounded-full">
+                    <div>
+                      <p class="text-gray-800 font-semibold">John Doe</p>
+                      <p class="text-gray-500 text-sm">Posted 2 hours ago</p>
+                    </div>
+                  </div>
+                  
+                </div>
+                 Message 
+                <div class="mb-4">
+                  <p class="text-gray-800">Just another day with adorable kittens! 🐱 Just another day with adorable kittens! 🐱 Just another day with adorable kittens! 🐱 Just another day with adorable kittens! 🐱 Just another day with adorable kittens! 🐱  <a href="social_card.html" class="text-blue-600">#CuteKitten</a>
+                    <a href="" class="text-blue-600">#AdventureCat</a>
+                  </p>
+                </div>
+                 Image 
+                <div class="mb-4">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3PHxtoBIXkNco9x4yys5CLZP3UDFWahA0fw&s" alt="Post Image" class="w-full h-48 object-cover rounded-md">
+                </div>
+                 Like and Comment Section 
+                <div class="flex items-center justify-between text-gray-500">
+                  <div class="flex items-center space-x-2">
+                    <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
+                      <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C6.11 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-4.11 6.86-8.55 11.54L12 21.35z" />
+                      </svg>
+                      <span>42 Likes</span>
+                    </button>
+                  </div>
+                  <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
+                    <svg width="22px" height="22px" viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z"></path>
+                      </g>
+                    </svg>
+                    <span>3 Comment</span>
+                  </button>
+                </div>
+              </div>-->
+              
+              <!-- Second Column -->
+              
+              <!-- Add more items as needed -->
+              <!-- First Column -->
+              
+              <!-- Second Column -->
+              
+              <!-- First Column -->
+              
+              <!-- Second Column -->
+              
+            </div>
+            <div id="pagination" class="p-5 float-end">
+              <ul class="flex items-center -space-x-px h-8 text-sm">
+              
+            </ul>
+            
+          </div>
+            
+          </div>
+          
+        
+        </div>
+        
+    </main>
+    <!-- end: Main -->
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/post_byTag.js}"></script>
+    <script type="text/javascript" th:src="@{/js/social_header.js}"></script>
+      </body>
+</html>

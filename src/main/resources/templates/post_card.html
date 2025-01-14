@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+        <link rel="stylesheet" href="dist/css/style.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Social</title>
+    </head>
+    <body>
+        <div th:insert="~{social_fragment/header :: header}"></div>
+        <main>
+            <div class="bg-gray-100 h-screen ml-30 mr-30 my-30 mx-10 items-center  text-wrap">
+                <div class="bg-white p-20 rounded-lg h-100 shadow-md ">
+                    <!-- User Info with Three-Dot Menu -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <img id="userAvatar" src="" alt="User Avatar" class="w-8 h-8 rounded-full">
+
+                            <div>
+                                <p id="userName" class="text-gray-800 font-semibold text-2xl"></p>
+                            </div>
+                        </div>
+                        <div id="btnDandE" class="float-end flex hidden">
+                            <a id="editBtn" href="#" class="">
+                            <svg fill="#000000" height="30px" width="30px" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13 21H21" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M20.0651 7.39423L7.09967 20.4114C6.72438 20.7882 6.21446 21 5.68265 21H4.00383C3.44943 21 3 20.5466 3 19.9922V18.2987C3 17.7696 3.20962 17.2621 3.58297 16.8873L16.5517 3.86681C19.5632 1.34721 22.5747 4.87462 20.0651 7.39423Z" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15.3096 5.30981L18.7273 8.72755" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="0.1" d="M18.556 8.90942L7.09967 20.4114C6.72438 20.7882 6.21446 21 5.68265 21H4.00383C3.44943 21 3 20.5466 3 19.9922V18.2987C3 17.7696 3.20962 17.2621 3.58297 16.8873L15.0647 5.35974C15.0742 5.4062 15.0969 5.45049 15.1329 5.48653L18.5506 8.90426C18.5524 8.90601 18.5542 8.90773 18.556 8.90942Z" fill="#323232"></path> </g></svg>
+                        </a>
+                            <a id="deleteBtn" class="ml-6" href="#" >
+                            <svg fill="#ca3f3f" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="XMLID_6_"> <g id="XMLID_11_"> <path d="M240,121.076H30V275c0,8.284,6.716,15,15,15h60h37.596c19.246,24.348,49.031,40,82.404,40c57.897,0,105-47.103,105-105 C330,172.195,290.816,128.377,240,121.076z M225,300c-41.355,0-75-33.645-75-75s33.645-75,75-75s75,33.645,75,75 S266.355,300,225,300z"></path> </g> <g id="XMLID_18_"> <path d="M240,90h15c8.284,0,15-6.716,15-15s-6.716-15-15-15h-30h-15V15c0-8.284-6.716-15-15-15H75c-8.284,0-15,6.716-15,15v45H45 H15C6.716,60,0,66.716,0,75s6.716,15,15,15h15H240z M90,30h90v30h-15h-60H90V30z"></path> </g> <g id="XMLID_23_"> <path d="M256.819,193.181c-5.857-5.858-15.355-5.858-21.213,0L225,203.787l-10.606-10.606c-5.857-5.858-15.355-5.858-21.213,0 c-5.858,5.858-5.858,15.355,0,21.213L203.787,225l-10.606,10.606c-5.858,5.858-5.858,15.355,0,21.213 c2.929,2.929,6.768,4.394,10.606,4.394c3.839,0,7.678-1.465,10.607-4.394L225,246.213l10.606,10.606 c2.929,2.929,6.768,4.394,10.607,4.394c3.839,0,7.678-1.465,10.606-4.394c5.858-5.858,5.858-15.355,0-21.213L246.213,225 l10.606-10.606C262.678,208.535,262.678,199.039,256.819,193.181z"></path> </g> </g> </g></svg>
+                        </a>
+                        
+                        </div>
+                        <!--delete post if ownner will be shown-->
+                        
+                    </div>
+                    <!-- Message -->
+                    <div class=" break-words">
+                        <!-- title -->
+                        <a id="postRecommendation" href="" class="m-4 text-2xl text-blue-600"></a>
+                        <p id="postTitle"  class="m-4 text-2xl break-words">
+                        <p id="postContent"  class="m-4 text-2xl text-gray-800 break-words">
+                            <!-- tag -->
+                        <div id="postTags" class="text-xl mt-2">
+                            <!-- foreach tag -->
+                            
+                        </div>
+
+                        </p>
+
+
+                    </div>
+                    <!-- Image -->
+                    <!--            <div class=" mb-4">
+                                    <img id="postImage"  alt="Post Image" class="  ml-96 w-1/2 h-1/2 object-cover rounded-md">
+                                </div>-->
+                    <!--slide image-->
+                    <div class="relative  overflow-hidden rounded-lg shadow-lg mt-4">
+                        <div id="slider" class="flex transition-transform duration-500">
+                            <!-- Slide 1 -->
+                            <div class="flex-shrink-0 w-full">
+                                <img src="https://via.placeholder.com/800x400?text=Image+1" alt="Slide 1" class="w-full h-100 object-cover">
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="flex-shrink-0 w-full">
+                                <img src="https://via.placeholder.com/800x400?text=Image+2" alt="Slide 2" class="w-full h-100 object-cover">
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="flex-shrink-0 w-full">
+                                <img src="https://via.placeholder.com/800x400?text=Image+3" alt="Slide 3" class="w-full h-100 object-cover">
+                            </div>
+                        </div>
+                        <!-- Navigation Buttons -->
+                        <button id="prevBtn" class="absolute top-1/2 -translate-y-1/2 left-4 bg-gray-700 text-white rounded-full p-2">
+                            &#10094;
+                        </button>
+                        <button id="nextBtn" class="absolute top-1/2 -translate-y-1/2 right-4 bg-gray-700 text-white rounded-full p-2">
+                            &#10095;
+                        </button>
+                    </div>
+
+                    <!-- Like and Comment Section -->
+                    <div class="flex items-center justify-between text-gray-500">
+                        <div class="flex items-center space-x-2">
+                            <button  id="likeBtn" class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
+                                <svg id="isLiked" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C6.11 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-4.11 6.86-8.55 11.54L12 21.35z" />
+                                </svg>
+                                <span id="likeCount"></span>
+                            </button>
+                        </div>
+                        <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
+                            <svg width="22px" height="22px" viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z"></path>
+                            </g>
+                            </svg>
+                            <span id="commentCount"></span>
+                        </button>
+                    </div>
+
+
+                </div>
+                <div class="bg-white">
+                    <hr class="mt-2 mb-2">
+                    <p class="text-gray-800 font-semibold">Comment</p>
+                    <hr class="mt-2 mb-2">
+                    <div id="listComment" class="overflow-y-auto h-42 mt-4  gap-3  ">
+                        <!-- Comment -->
+                        <!--                <div id="comment-1">
+                                            <div class="flex items-center space-x-2 mt-5">
+                                                <img src="https://placekitten.com/40/40" alt="User Avatar" class="w-8 h-8 rounded-full">
+                                                <div>
+                                                     user comment username 
+                                                    <p class="text-gray-800 font-semibold">Jane Smith</p>
+                                                     comment content 
+                                                    <p class="text-gray-500 text-sm">Lovely shot! 📸</p>
+                                                </div>
+                                                
+                                            </div>
+                                             list reply 
+                                                <div>
+                                                 reply 1 
+                                                <div class="flex items-center space-x-2 mt-2 ml-8">
+                                                <img id="userAvatar" src="https://placekitten.com/40/40" alt="User Avatar" class="w-8 h-8 rounded-full">
+                                                
+                                                     user reply username 
+                                                    <p class="text-gray-800 font-semibold">John Doe</p>
+                                                     reply content 
+                                                    <p class="text-gray-500 text-sm">That little furball is from a local shelter. You should check it out! 🏠😺</p>
+                                                </div>
+                                                <div class="flex items-center space-x-2 mt-2 ml-8">
+                                                    <img id="userAvatar" src="https://placekitten.com/40/40" alt="User Avatar" class="w-8 h-8 rounded-full">
+                                                    <div>
+                                                        <p class="text-gray-800 font-semibold">John Doe</p>
+                                                        <p class="text-gray-500 text-sm">That little furball is from a local shelter. You should check it out! 🏠😺</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             reply 1 
+                                             
+                                        </div>-->
+
+
+
+
+
+
+
+
+
+                        <!-- Reply from John Doe with indentation -->
+
+                        <!-- Add more comments and replies as needed -->
+
+                    </div>
+
+                    <div style="position: sticky; bottom: 0; background-color: white; z-index: 10;">
+                        
+                            <form th:if="${userId != null}" class=" bg-white rounded-lg border p-2 mx-auto mt-4">
+                                <div class="px-3 mb-2 mt-2">
+                                    <div id="replyIndicator"></div> 
+                                    <textarea id="commentTxt" placeholder="Comment" class="w-full bg-gray-100 rounded border border-gray-400 leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"></textarea>
+                                </div>
+                                <div class="flex justify-end px-4">
+                                    <input id="buttonComment" type="button" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-indigo-500" value="Comment">
+                                </div>
+                            </form>
+                        
+                        <div th:if="${userId == null}" class="text-center p-4 bg-gray-100 border-t">
+                            <p class="text-gray-700">
+                                Please <a th:href="@{/login}" class="text-blue-500 hover:underline">log in</a> to comment.
+                            </p>
+                        </div>
+                    </div>
+                    <script src="social_card.js"></script>
+                </div>
+            </div>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script type="text/javascript" th:src="@{/js/post_card.js}"></script>
+            <script type="text/javascript" th:src="@{/js/social_header.js}"></script>
+            <script type="text/javascript" th:inline="javascript">
+                var postId = [[${postId}
+                ]];
+                        var userId = [[${userId != null ? userId : 'null'}
+                        ]];
+                    var userRole = [[${userRole}]];
+            </script>
+            <!--            <script>
+                            let currentIndex = 0;
+            
+                            function showSlide(index) {
+                                const slider = document.getElementById('slider');
+                                const slides = slider.children.length;
+            
+                                // Kiểm tra nếu vượt quá slide đầu hoặc cuối
+                                if (index >= slides) {
+                                    currentIndex = 0; // Quay lại slide đầu
+                                } else if (index < 0) {
+                                    currentIndex = slides - 1; // Quay lại slide cuối
+                                } else {
+                                    currentIndex = index;
+                                }
+            
+                                // Dịch chuyển slider
+                                const offset = -currentIndex * 100;
+                                slider.style.transform = `translateX(${offset}%)`;
+                            }
+            
+                    // Điều hướng
+                            document.getElementById('nextBtn').addEventListener('click', () => showSlide(currentIndex + 1));
+                            document.getElementById('prevBtn').addEventListener('click', () => showSlide(currentIndex - 1));
+            
+                    // Hiển thị slide đầu tiên
+                            showSlide(0);
+            
+                        </script>-->
+        </div>
+    </div>
+</main>
+
+</body>

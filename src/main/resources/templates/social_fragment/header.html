@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Social</title>
+        <meta charset="UTF-8">
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <nav class="py-1.5 bg-white shadow-md shadow-black/5 h-14 flex items-center sticky top-0 left-0 z-30">
+                <div class="container max-w-7xl mx-auto px-4 flex items-center">
+                    <button type="button" class="sidebar-toggle mr-4 lg:hidden"><i class="ri-menu-2-line"></i></button>
+                    <a href="/social" class="flex items-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-Mi0c4Tl9gJ7nEOwsGxqF_fDdlHtT5zfKDg&s" alt="" class="w-9 h-9 object-cover rounded-md mr-3">
+                        <span class="font-bold text-lg text-blue-500 hidden sm:block">Social</span>
+                    </a>
+                    <a href="/home" class="m-11 flex items-center">
+
+                        <span class="font-bold text-lg text-blue-500 hidden sm:block">Home</span>
+                    </a>
+                    <a href="/social/posts" class="m-11 flex items-center">
+
+                        <span class="font-bold text-lg text-blue-500 hidden sm:block">All post</span>
+                    </a>
+                    <a href="/social/tag" class="m-11 flex items-center">
+
+                        <span class="font-bold text-lg text-blue-500 hidden sm:block">All post tag</span>
+                    </a>
+                    <div class="ml-auto flex items-center">
+                        <form id="searchForm" class="relative mr-4 hidden sm:block w-72">
+                            <input 
+                                type="text" 
+                                id="searchInput" 
+                                class="py-2.5 px-4 pl-10 text-sm rounded-md focus:outline-blue-500 bg-gray-100 w-full" 
+                                placeholder="Search..."
+                                >
+                            <i class="ri-search-line absolute top-1/2 -translate-y-1/2 left-4 text-gray-400 pointer-events-none"></i>
+                        </form>
+                        <ul class="flex items-center">
+                            <li class="mr-2 sm:hidden">
+                                <div class="dropdown group">
+                                    <button type="button" class="dropdown-toggle w-8 h-8 rounded-md flex items-center justify-center hover:bg-gray-100 text-gray-400 group-[.active]:text-gray-500 group-[.active]:bg-gray-100">
+                                        <i class="ri-search-line"></i>
+                                    </button>
+                                    <div class="dropdown-menu z-20 py-2 rounded-md shadow-md shadow-black/5 border border-gray-100 w-[calc(100%-32px)] sm:w-72 hidden group-[.active]:block bg-white">
+                                        <form action="" class="relative mb-2 mx-4">
+                                            <input type="text" class="py-2.5 px-4 pl-10 text-sm rounded-md focus:outline-blue-500 bg-gray-100 w-full" placeholder="Search...">
+                                            <i class="ri-search-line absolute top-1/2 -translate-y-1/2 left-4 text-gray-400 pointer-events-none"></i>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </li>
+                            
+                                
+                            <li class="mr-3">
+                                <div class="dropdown group">
+                                    <button type="button" class="dropdown-toggle w-8 h-8 rounded-md flex items-center justify-center hover:bg-gray-100 text-gray-400 group-[.active]:text-gray-500 group-[.active]:bg-gray-100">
+                                        <i class="ri-notification-3-line"></i>
+                                    </button>
+                                    <ul class="dropdown-menu z-20 py-2 rounded-md shadow-md shadow-black/5 border border-gray-100 w-72 max-h-64 overflow-y-auto hidden group-[.active]:block bg-white">
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown group">
+                                    <a href="/social/posts/your-posts" class="dropdown-toggle flex items-center">
+                                        <img id="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAMFBMVEXU1NT////R0dHV1dX09PTf39/8/Pzb29vu7u7x8fHl5eX5+fnc3Nzr6+vi4uLw8PCR9fa8AAAFQElEQVR4nO2d6ZKjMAyEjQzmSsj7v+2gMBnIHcCy2hl9Vbs/9qiaLtmSfDXOGYZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhbIOI/n59D97z76MmXw/dsS2Z9tgNtf/VOf2DvCFXd20fimtC33a1yzyYU3Sq5lbcQmZTLf5ljlDd9E/lTfRNnXEgq/KNvImy0v5Bt0HVu/AtAlllF0dPh7J4Pv9uCUVZU1aTkVzzsboLTU6Jdc0AncloqNKxWDFCL4z/45iHRPKfZdBHlD4DjVSvD98ikPDF0VO1Qx9ToefUvQJHidoSXkJV2DNGmRCgU+r+CIJHsY4isChqbSHP8Fvq/CN61GSzvQ7eUmpLeQh3MtEA7G58pCxzoQJc9++uE0tC0JZzB61fLr2mQRunh8gCi+KgLekaKmOOUSaUWEGMm2YmoFobilcKZ5CCuHvJ9BigIIqEECiIPlrHfUuNUvaj18ILODUxajszg9PYyOQZBiTX0ElM4QlkmMqMUQZkmEplUgZjP6MTjGGnLY6hVkxgUbQIE5Fi7T89okdQ6AUFFoV+U+MF1r5LDgCNWyeqECDVRN1EvAdgW1Gs7Z4AaL4FezYGoG8TWv1eAFgFm0JTaAoBFEo23hCt9z+oh8Jdm75CN4gqHLTlCW4HTyBsCn/7+pDX+IL7NBBrfMlyEQCKheMlsFQQA8IC2P2H/VISnIcQg/Q/nFt8/dmT3NEMyMGM84JnwAgFn5E7x0fh2+9iOKlcA5NnnND5E0RP+kcVvXMLUCEUmYlIs3CEBO6XYin8B3eEKXJjEwBflMa+q4/Ht7+3YNa83n5FAH0zM7an0d494TSk11C0t2uYYzTGE9kJ5IeyUSRCvyHdLTGgC9z9EjgEtGbtDu/2vsfHnYN/7PJU0P7hP2NzdwPaydzjN3ubZBJCx+4fG/xpcnD9WMAeQ2so4XPoPcQ+WJ/k1cBeWPnp4+N3+tjri7K1bKP6+Nav7QjbZ3+Cd+QOp9eee5Rr+H7hwUrsm3gfvLarKd/heQP7XLL3ZdMyJ/a+/DKPzylSZ+dSOjuYum+JnWEYhmEYf0xlnr27L8x/lj+jDH/omrbvF9uMIfR923QH7zJXSZNZ+au109m2PFeV5IZ2Ctuz5dPv37YD4IHvS85dth/WbNSUg8+rG6f6hdX8k3hm5M1ONGw7Ku2HPGbktu3gX434e27TdvfWs5mAr5Hq/be/SuT5GOnCCeYBjeePBUS7i3EgD1c5KPqNIbRAstd8vJtt4ew/jxTFcYRGv0GLdRhF8V93haIDOjAV8jfByal0EnmfF2CePVEr9AAxYNz19qKmCi3CXBwjKPYAMRStsjovbalwvtGuGsZRoNwLUiYoX9pnywhphYrGEV72kfNMrbaBQ07SUHCmV+vChc13ZrTKorBvyxKlqbjrquw6gsbzBNle5pZSo7dJN0aZ9AYZ3qcbo0xI/lVd8W7tluStTZpavyRxshF2aXtEYjOe9CFMHMT4n5V5T9oPz9TCK4qHClMGUdh39hkpN6bSR5AJ6Upi2nZmJlljk7QjXZIs12jkGSZZrqGjmsJE+/yiH0N4TSLLGo1+5kKaYaqVSZkk2VQtkzJpsqlOmplI4lGnOQ3TTEQ5u9L3JDE0Tb59cU2CzQzVRJMm1ejVe6aXF+gVpyFPRPkVlOzHj94j/5lgWZP594jb0At//Og90ssLOb/ZTxH3pVXahJoR345SLofyBTHtqeFjhdKjVF+hrEBTaApzUJj+4PAa8WNEgIovrNCpd23SAhNehHrM6utRP3IESPnqlEjaAAAAAElFTkSuQmCC" alt="Avatar" class="w-9 h-9 object-cover rounded-md block">
+                                    </a>
+                                    
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <script type="text/javascript" th:src="@{/js/header.js}"></script>
+    </body>
+</html>

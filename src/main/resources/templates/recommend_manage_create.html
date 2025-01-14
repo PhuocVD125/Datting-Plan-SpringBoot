@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Recommendation</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 font-sans leading-relaxed tracking-wide">
+        <div th:replace="~{'fragment/admin_header' :: admin_header}"></div>
+        <!-- Container -->
+        <div class="container mx-auto p-6 max-w-2xl bg-white shadow-lg rounded-lg mt-6">
+            <h1 class="text-3xl font-semibold text-gray-800 mb-4">Create New Recommendation</h1>
+
+            <!-- Form -->
+            <form id="create-form">
+                <div class="flex flex-col">
+                    <label for="manufacturer" class="text-sm font-medium text-stone-600">City</label>
+                    <select id="city" class="form-select form-select-sm mt-2 block w-full rounded-md border border-gray-100 bg-gray-100 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"  aria-label=".form-select-sm">
+                        <option value="" selected>Select City</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="manufacturer" class="text-sm font-medium text-stone-600">District</label>
+
+                    <select class="form-select form-select-sm mt-2 block w-full rounded-md border border-gray-100 bg-gray-100 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" id="district" aria-label=".form-select-sm">
+                        <option value="" selected>Select District</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="address" class="block text-gray-600">Address:</label>
+                    <textarea id="address" name="address" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" ></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-600">Email:</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" >
+                </div>
+
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-600">Title:</label>
+                    <input type="text" id="title" name="title" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                </div>
+                
+                <div class="mb-4 flex space-x-4">
+                    <div class="w-1/2">
+                        <label for="start-time" class="block text-gray-600">Start Time:</label>
+                        <input type="time" id="start-time" name="start-time" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" >
+                    </div>
+
+                    <div class="w-1/2">
+                        <label for="end-time" class="block text-gray-600">End Time:</label>
+                        <input type="time" id="end-time" name="end-time" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" >
+                    </div>
+                </div>
+
+                <div class="mb-4 flex space-x-4">
+                    <div class="w-1/2">
+                        <label for="start-time" class="block text-gray-600">Start Date:</label>
+                        <input type="date" id="start-date" name="start-date" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" >
+                    </div>
+
+                    <div class="w-1/2">
+                        <label for="end-time" class="block text-gray-600">End Date:</label>
+                        <input type="date" id="end-date" name="end-date" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" >
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="recommend-time" class="block text-gray-600">Recommend Time:</label>
+                    <input type="text" id="recommend-time" name="recommend-time" placeholder="e.g. 2 hours" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" >
+                </div>
+                
+                <div class="mb-4">
+                    <label for="description" class="block text-gray-600">Description:</label>
+                    <textarea id="description" name="description" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required></textarea>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="min-budget" class="block text-gray-600">Min Budget:</label>
+                    <input type="number" id="min-budget" name="min-budget" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="max-budget" class="block text-gray-600">Max Budget:</label>
+                    <input type="number" id="max-budget" name="max-budget" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="is-active" class="block text-gray-600">Active:</label>
+                    <input type="checkbox" id="is-active" name="is-active" class="h-5 w-5 text-blue-600 rounded">
+                </div>
+
+                <!-- Tags container -->
+                <label for="tags" class="block text-gray-600">Select Tags:</label>
+                <div id="tags-container" class="overflow-y-auto max-h-48 p-2 border border-gray-300 rounded-lg">
+                    <!-- Tags will be added here via JavaScript -->
+                </div>
+
+                <!-- Image Upload -->
+                <div class="mb-4 mt-6"> <!-- Thêm margin-top (mt-6) ở đây -->
+                    <label for="images" class="block text-gray-700">Upload Images:</label>
+                    <input type="file" id="images" name="images" multiple class="mt-1 p-2 w-full border border-gray-300 rounded" />
+                    <div id="image-preview-container" class="mt-2 grid grid-cols-3 gap-2">
+                        <!-- Previews for selected images -->
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none transition duration-300">Create Recommendation</button>
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript" th:src="@{/js/recommend_manage_create.js}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        <script>
+            var citis = document.getElementById("city");
+            var districts = document.getElementById("district");
+
+            // Cấu hình API
+            var Parameter = {
+                url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+                method: "GET",
+                responseType: "application/json",
+            };
+
+            // Gọi API và xử lý dữ liệu
+            axios(Parameter).then(function (result) {
+                renderCity(result.data);
+            });
+
+            // Render danh sách tỉnh thành
+            function renderCity(data) {
+                for (const x of data) {
+                    citis.options[citis.options.length] = new Option(x.Name, x.Id);
+                }
+
+                // Khi chọn tỉnh thành
+                citis.onchange = function () {
+                    districts.length = 1; // Reset danh sách quận/huyện
+                    if (this.value !== "") {
+                        const result = data.filter(n => n.Id === this.value); // Lấy tỉnh được chọn
+
+                        for (const k of result[0].Districts) {
+                            districts.options[districts.options.length] = new Option(k.Name, k.Id);
+                        }
+                    }
+                };
+            }
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </body>
+</html>
