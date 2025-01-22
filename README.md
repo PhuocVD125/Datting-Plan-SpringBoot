@@ -2,7 +2,7 @@
 Dating-Plan-SpringBoot
 
 Ứng dụng gợi ý và quản lý kế hoạch hẹn hò.
-Người dùng có thể sử dụng các chức năng"
+Người dùng có thể sử dụng các chức năng:
 + Tìm kiếm các gợi ý theo nhu cầu cá nhân
 + Lên và quản lý kế hoạch
 + Đặt chỗ
